@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.header {
+  height:
+}
+
+
 .stack{
   display: flex;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 10px;
@@ -11,8 +17,23 @@
   min-width: 20%;
   padding: 20px;
   margin: 5px;
-
   box-shadow: 0.4em 0.4em 1em -0.2em;
+}
+
+.newRecipe {
+  min-width: 20%;
+  padding: 20px;
+  margin: 5px;
+  box-shadow: 0.4em 0.4em 1em -0.2em;
+  display: flex;
+  flex-direction: column;
+  max-width: 40%
+
+}
+
+.select {
+display: flex;
+justify-content: center;
 }
 
 hr {

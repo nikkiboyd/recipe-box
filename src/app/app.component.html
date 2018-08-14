@@ -1,16 +1,10 @@
-<div class="jumbotron">
-<h1>
-  {{title}}
-</h1>
-</div>
-
+<div class="header">
 <h1>Welcome, {{userName}}!</h1>
-
-<app-recipe-list [childRecipeList]="masterRecipeList" (clickSender)="editRecipe($event)"></app-recipe-list>
-
 <form>
   <input [(ngModel)]="userName" type="text" name="user">
 </form>
+</div>
 
+<app-recipe-list [childRecipeList]="masterRecipeList" (clickSender)="editRecipe($event)"></app-recipe-list>
 <app-edit-recipe [childSelectedRecipe]="selectedRecipe" (clickedDone)="finishedEditing()"></app-edit-recipe>
 <app-recipe-new (sendRecipe)="addRecipe($event)"></app-recipe-new>

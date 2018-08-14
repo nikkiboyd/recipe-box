@@ -1,24 +1,28 @@
-<h1>New Task</h1>
-<div>
- <label>Enter New Title:</label>
- <input #newTitle>
-</div>
-<div>
- <label>Enter New Ingredients:</label>
- <input #newIngredients>
-</div>
-<div>
- <label>Enter New Directions:</label>
- <input #newDirections>
-</div>
-<div>
-  <label>New Rating:</label>
-  <select #newRating>
-    <option [value]="1"> 1 </option>
-    <option [value]="2"> 2 </option>
-    <option [value]="2"> 3 </option>
-    <option [value]="3"> 4 </option>
-    <option [value]="3"> 5 </option>
-  </select>
-  <button (click)="submitForm(newTitle.value, newIngredients.value, newDirections.value, newRating.value); newTitle.value=''; newIngredients.value=''; newDirections.value=''; newRating.value='';">Add</button>
+<div class="stack">
+  <div class="newRecipe">
+   <h1>New Recipe</h1>
+   <div>
+   <label>Enter New Title:</label>
+   <input #newTitle>
+  </div>
+  <div>
+   <label>Enter New Ingredients:</label>
+   <input #newIngredients>
+  </div>
+  <div>
+   <label>Enter New Directions:</label>
+   <input #newDirections>
+  </div>
+  <div>
+    <label>New Rating:</label>
+    <select #newRating>
+      <option [value]="1"> 1 </option>
+      <option [value]="2"> 2 </option>
+      <option [value]="2"> 3 </option>
+      <option [value]="3"> 4 </option>
+      <option [value]="3"> 5 </option>
+    </select>
+    <button (click)="submitForm(newTitle.value, newIngredients.value, newDirections.value, newRating.value); newTitle.value=''; newIngredients.value=''; newDirections.value=''; newRating.value='';">Add</button>
+   </div>
+  </div>
 </div>
