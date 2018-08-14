@@ -14,9 +14,11 @@
 <div>
   <label>New Rating:</label>
   <select #newRating>
-    <option [value]="1"> Low Priority </option>
-    <option [value]="2"> Medium Priority </option>
-    <option [value]="3"> High Priority </option>
+    <option [value]="1"> 1 </option>
+    <option [value]="2"> 2 </option>
+    <option [value]="2"> 3 </option>
+    <option [value]="3"> 4 </option>
+    <option [value]="3"> 5 </option>
   </select>
-  <button (click)="submitForm(newTitle.value, newIngredients.value, newDirections.value, newRating.value)">Add</button>
+  <button (click)="submitForm(newTitle.value, newIngredients.value, newDirections.value, newRating.value); newTitle.value=''; newIngredients.value=''; newDirections.value=''; newRating.value='';">Add</button>
 </div>

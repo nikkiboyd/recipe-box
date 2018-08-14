@@ -1,13 +1,25 @@
-<div class="card" *ngFor="let currentRecipe of childRecipeList" style="width: 300px; height: 400px;">
-  <h2>{{currentRecipe.title}}</h2>
-  <button (click)="editButtonClicked(currentRecipe)" [class]="ratingColor(currentRecipe)">Edit</button>
-  <hr [class]="ratingColor(currentRecipe)">
-  <h4>Ingredients</h4>
-  <ul>
-    <li *ngFor="let ingredient of currentRecipe.ingredients">{{ingredient}}</li>
-  </ul>
-  <h4>Directions</h4>
-  <ol>
-    <li *ngFor="let direction of currentRecipe.directions">{{direction}}</li>
-  </ol>
+<select (change)="onChange($event.target.value)">
+  <option value="allRecipes">All Recipes</option>
+  <option value="completedRecipes">Completed Recipes</option>
+  <option value="incompleteRecipes" selected="selected">Incomplete Recipes</option>
+</select>
+
+<div class="stack">
+  <div class="recipe" *ngFor="let currentRecipe of childRecipeList | cooked:filterByCompleteness">
+    <h2>{{currentRecipe.title}}</h2>
+
+    <input *ngIf="currentRecipe.cooked === true" type="checkbox" checked (click)="toggleDone(currentRecipe, false)"/>
+    <input *ngIf="currentRecipe.cooked === false" type="checkbox" (click)="toggleDone(currentRecipe, true)"/>
+
+    <button (click)="editButtonClicked(currentRecipe)" [class]="ratingColor(currentRecipe)">Edit</button>
+    <hr [class]="ratingColor(currentRecipe)">
+   <h4>Ingredients</h4>
+   <ul>
+     <li *ngFor="let ingredient of currentRecipe.ingredients">{{ingredient}}</li>
+   </ul>
+   <h4>Directions</h4>
+   <ol>
+     <li *ngFor="let direction of currentRecipe.directions">{{direction}}</li>
+   </ol>
+  </div>
 </div>

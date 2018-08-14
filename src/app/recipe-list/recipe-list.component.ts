@@ -28,4 +28,15 @@ import { Recipe } from '../models/recipe.model';
       return "bg-danger";
     }
   }
+
+  filterByCompleteness: string = "incompleteRecipes";
+
+  onChange(optionFromMenu) {
+  this.filterByCompleteness= optionFromMenu;
+}
+
+toggleDone(clickedRecipe: Recipe, setCompleteness: boolean) {
+   clickedRecipe.cooked = setCompleteness;
+ }
+
 }
