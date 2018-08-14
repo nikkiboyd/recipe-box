@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { Recipe } from '../models/recipe.model';
 
 @Component({
@@ -7,25 +7,13 @@ import { Recipe } from '../models/recipe.model';
   styleUrls: ['./recipe-list.component.css']
 })
 
-export class RecipeListComponent {
-  recipes: Recipe[] = [
-    new Recipe(
-      'Doughnut',
-      ['Dough', 'Nuts', 'More Nuts'],
-      ['Make Dough', 'Fry that shit', 'Eat it'],
-      4),
+  export class RecipeListComponent {
+    @Input() childRecipeList: Recipe[];
+    @Output() clickSender = new EventEmitter();
 
-    new Recipe(
-      'Pizza',
-      ['Dough', 'Sauce', 'Cheese'],
-      ['Make Dough', 'Put Stuff On It', 'Eat it'],
-      3),
-    new Recipe(
-      'Salad',
-      ['Lettuce', 'Stuff', 'Dressing'],
-      ['Toss that shit', 'Eat it'],
-      2),
-  ];
+  editButtonClicked(recipeToEdit: Recipe) {
+   this.clickSender.emit(recipeToEdit);
+ }
 
   ratingColor(currentRecipe) {
     if (currentRecipe.rating === 5) {

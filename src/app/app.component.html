@@ -1,28 +1,16 @@
 <div class="jumbotron">
-  <h1>
-    {{title}}
-  </h1>
+<h1>
+  {{title}}
+</h1>
 </div>
 
 <h1>Welcome, {{userName}}!</h1>
 
-<app-recipe-list></app-recipe-list>
+<app-recipe-list [childRecipeList]="masterRecipeList" (clickSender)="editRecipe($event)"></app-recipe-list>
 
 <form>
   <input [(ngModel)]="userName" type="text" name="user">
 </form>
 
-<div *ngIf="selectedRecipe">
-  <h3>{{selectedRecipe.title}}</h3>
-  <h3>Edit Recipe</h3>
-  <label>Enter Dish Name:</label>
-  <input [(ngModel)]="selectedRecipe.title">
-  <label>Enter Task Rating (1-5 stars):</label>
-  <br>
-  <input type="radio" [(ngModel)]="selectedRecipe.rating" [value]="1">1 star<br>
-  <input type="radio" [(ngModel)]="selectedRecipe.rating" [value]="2">2 star<br>
-  <input type="radio" [(ngModel)]="selectedRecipe.rating" [value]="3">3 star<br>
-  <input type="radio" [(ngModel)]="selectedRecipe.rating" [value]="4">4 star<br>
-  <input type="radio" [(ngModel)]="selectedRecipe.rating" [value]="5">5 star<br>
-  <button (click)="finishedEditing()">Done</button>
-</div>
+<app-edit-recipe [childSelectedRecipe]="selectedRecipe" (clickedDone)="finishedEditing()"></app-edit-recipe>
+<app-recipe-new (sendRecipe)="addRecipe($event)"></app-recipe-new>
