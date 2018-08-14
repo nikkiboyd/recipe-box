@@ -1,0 +1,13 @@
+<div class="card" *ngFor="let currentRecipe of recipes" style="width: 300px; height: 400px;">
+  <h2>{{currentRecipe.title}}</h2>
+  <button (click)="editIngredients(currentRecipe)" [class]="ratingColor(currentRecipe)">Edit</button>
+  <hr [class]="ratingColor(currentRecipe)">
+  <h4>Ingredients</h4>
+  <ul>
+    <li *ngFor="let ingredient of currentRecipe.ingredients">{{ingredient}}</li>
+  </ul>
+  <h4>Directions</h4>
+  <ol>
+    <li *ngFor="let direction of currentRecipe.directions">{{direction}}</li>
+  </ol>
+</div>
