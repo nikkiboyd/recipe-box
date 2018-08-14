@@ -4,14 +4,37 @@
   </h1>
 </div>
 
-  <div class="card" style="width: 300px; height: 400px;" *ngFor="let currentRecipe of recipes">
-    <h2>{{currentRecipe.title}}</h2>
-    <h4>Ingredients</h4>
-    <ul>
-      <li *ngFor="let ingredient of currentRecipe.ingredients">{{ingredient}}</li>
-    </ul>
-    <h4>Directions</h4>
-    <ol>
-      <li *ngFor="let direction of currentRecipe.directions">{{direction}}</li>
-    </ol>
-  </div>
+<h1>Welcome, {{userName}}!</h1>
+
+<form>
+  <input [(ngModel)]="userName" type="text" name="user">
+</form>
+
+<div class="card" *ngFor="let currentRecipe of recipes" style="width: 300px; height: 400px;">
+  <h2>{{currentRecipe.title}}</h2>
+  <button (click)="editIngredients(currentRecipe)" [class]="ratingColor(currentRecipe)">Edit</button>
+  <hr [class]="ratingColor(currentRecipe)">
+  <h4>Ingredients</h4>
+  <ul>
+    <li *ngFor="let ingredient of currentRecipe.ingredients">{{ingredient}}</li>
+  </ul>
+  <h4>Directions</h4>
+  <ol>
+    <li *ngFor="let direction of currentRecipe.directions">{{direction}}</li>
+  </ol>
+</div>
+
+<div *ngIf="selectedRecipe">
+  <h3>{{selectedRecipe.title}}</h3>
+  <h3>Edit Recipe</h3>
+  <label>Enter Dish Name:</label>
+  <input [(ngModel)]="selectedRecipe.title">
+  <label>Enter Task Rating (1-5 stars):</label>
+  <br>
+  <input type="radio" [(ngModel)]="selectedRecipe.rating" [value]="1">1 star<br>
+  <input type="radio" [(ngModel)]="selectedRecipe.rating" [value]="2">2 star<br>
+  <input type="radio" [(ngModel)]="selectedRecipe.rating" [value]="3">3 star<br>
+  <input type="radio" [(ngModel)]="selectedRecipe.rating" [value]="4">4 star<br>
+  <input type="radio" [(ngModel)]="selectedRecipe.rating" [value]="5">5 star<br>
+  <button (click)="finishedEditing()">Done</button>
+</div>

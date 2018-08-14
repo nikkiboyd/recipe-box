@@ -12,15 +12,42 @@ export class AppComponent {
     new Recipe(
       'Doughnut',
       ['Dough', 'Nuts', 'More Nuts'],
-      ['Make Dough', 'Fry that shit', 'Eat it']),
+      ['Make Dough', 'Fry that shit', 'Eat it'],
+      4),
+
     new Recipe(
       'Pizza',
       ['Dough', 'Sauce', 'Cheese'],
-      ['Make Dough', 'Put Stuff On It', 'Eat it']),
+      ['Make Dough', 'Put Stuff On It', 'Eat it'],
+      3),
     new Recipe(
       'Salad',
       ['Lettuce', 'Stuff', 'Dressing'],
-      ['Toss that shit', 'Eat it']),
-
+      ['Toss that shit', 'Eat it'],
+      2),
   ];
+
+  selectedRecipe = null;
+
+  editIngredients(clickedRecipe) {
+    this.selectedRecipe = clickedRecipe;
+  }
+
+  finishedEditing() {
+    this.selectedRecipe = null;
+  }
+
+  ratingColor(currentRecipe) {
+    if (currentRecipe.rating === 5) {
+      return "bg-success";
+    } else if (currentRecipe.rating === 4) {
+      return "bg-info";
+    } else if (currentRecipe.rating === 3) {
+      return "bg-primary";
+    } else if (currentRecipe.rating === 2) {
+      return "bg-warning";
+    } else if (currentRecipe.rating === 1) {
+      return "bg-danger";
+    }
+  }
 }

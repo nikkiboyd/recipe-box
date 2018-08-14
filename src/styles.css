@@ -4,3 +4,7 @@
   padding: 10px;
   float: left;
 }
+
+hr {
+  border-width: 3px;
+}
